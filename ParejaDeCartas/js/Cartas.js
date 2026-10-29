@@ -1,13 +1,13 @@
 function mostrarCartas(cartas) {
     const contenedor = document.getElementById("tablero");
     contenedor.innerHTML = "";
-    
+
     for (let i = 0; i < cartas.length; i++) {
-    let carta = cartas[i];
-    let etiqueta = document.createElement("span");
-    etiqueta.textContent = carta.numero + " ";//Añadimos el numero de la carta al span.
-    contenedor.appendChild(etiqueta);//Metemos el span dentro del tablero.
-}
+        let carta = cartas[i];
+        let etiqueta = document.createElement("span");
+        etiqueta.textContent = carta.numero + " ";//Añadimos el numero de la carta al span.
+        contenedor.appendChild(etiqueta);//Metemos el span dentro del tablero.
+    }
 }
 function generarCartas(numParejas) {
     let cartas = [];
