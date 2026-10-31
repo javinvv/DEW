@@ -4,9 +4,10 @@ function mostrarCartas(cartas) {
 
     for (let i = 0; i < cartas.length; i++) {
         let carta = cartas[i];
-        let etiqueta = document.createElement("span");
-        etiqueta.textContent = carta.numero + " ";//Añadimos el numero de la carta al span.
-        contenedor.appendChild(etiqueta);//Metemos el span dentro del tablero.
+        let etiqueta = document.createElement("div");
+        etiqueta.classList.add("cuadrado");//Añadimos la clase carta al div para posteriormente darle forma en el documento css.
+        etiqueta.textContent = carta.numero;//Añadimos el numero de la carta a la etiqueta div.
+        contenedor.appendChild(etiqueta);//Metemos la etiqueta div dentro del tablero.
     }
 }
 function generarCartas(numParejas) {
