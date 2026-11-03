@@ -1,5 +1,5 @@
-# Intrucciones de mi ejercicio
+# Intrucciones de mi ejercicio Pareja de Cartas.
 
 Primero debemos tener instalado live server, para poder ejecutarlo desde el navegador.
 
-Ademas podemos guardar nuestro programa si en la consola llamamos a la funcion guardar, tambien podemos restablecer los valores iniciales con la funcion restablecer, y con la funcion fin terminamos el programa.
+Cuando entramos a la pestaña vemos que nos pide un numero de parejas, le decimos el que queramos siempre y cuando este entre 4 y 12, luego desde la consola podemos llamar a la funcion fin para terminar nuestro programa, despues de esto reiniciamos la pagina y empezamos de nuevo.
