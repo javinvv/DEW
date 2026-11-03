@@ -1,28 +1,3 @@
-const clave = "parejas_cartas";
-const ValorPredeterminado = {parejas: 8};
-
-function cargarCartas() {
-    let guardar = localStorage.getItem(clave);
-    if (guardar) {
-        try {
-            let configuracion = JSON.parse(guardar);//Convierte un texto con formato JSON a un array de JavaScript.
-            if (configuracion.parejas >= 4 && configuracion.parejas <= 12) {
-                return configuracion;
-            }
-        }catch (error) {
-            console.error("Error al analizar la configuración guardada:", error);
-        }
-    }
-    return ValorPredeterminado;
-}
-function guardar(numParejas) {
-    let configuracion = {parejas: numParejas};
-    localStorage.setItem(clave, JSON.stringify(configuracion));//JSON.stringify convierte un valor a JSON para poder guardarlo en el localStorage.
-}
-function restablecer() {
-    localStorage.removeItem(clave);
-    console.log("Configuración restablecida, se han eliminado los datos guardados.");
-}
 function fin() {
     localStorage.removeItem(clave);
     console.log("Partida finalizada.");
@@ -72,17 +47,28 @@ function mostrarConsola(cartas, numParejas) {
 }
 
 function iniciarJuego() {
-    let ParejaCartas = prompt("Introduce el número de parejas (del 4 al 12):");
-    if (ParejaCartas !== null) {
-        let numeroP = Number(ParejaCartas);
-        if (!Number.isNaN(numeroP) && numeroP >= 4 && numeroP <= 12) {
-            let mazo = generarCartas(numeroP);
-            let barajado = fisher_yates(mazo);
-            mostrarCartas(barajado);
-            mostrarConsola(barajado, numeroP);
-        }else{
-            alert("El número escogido está fuera de rango (debe ser entre 4 y 12) o no es válido.");
+    let datos = localStorage.getItem("partidaGuardada");
+    let numeroP;
+    if(datos){
+        let guardado = JSON.parse(datos);
+        numeroP = Number(guardado);
+        console.log("Partida recuperada.");
+    }else{
+        let ParejaCartas = prompt("Introduce el número de parejas. Tiene que ser un numero del 4 al 12:");
+        if (ParejaCartas !== null) {
+            numeroP = Number(ParejaCartas);
+            if (!Number.isNaN(numeroP) && numeroP >= 4 && numeroP <= 12) {
+                localStorage.setItem("partidaGuardada", JSON.stringify(ParejaCartas));//JSON.stringify convierte un valor a JSON para poder guardarlo en el localStorage.
+            }else{
+                alert("El número escogido está fuera de rango (debe ser entre 4 y 12) o no es válido.");
+                return;
+            }
         }
+        return;
     }
+    let mazo = generarCartas(numeroP);
+    let barajado = fisher_yates(mazo);
+    mostrarCartas(barajado);
+    mostrarConsola(barajado, numeroP);
 }
 iniciarJuego();
