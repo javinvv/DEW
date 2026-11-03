@@ -1,8 +1,3 @@
-function fin() {
-    localStorage.removeItem(clave);
-    console.log("Partida finalizada.");
-}
-
 function mostrarCartas(cartas) {
     const contenedor = document.getElementById("tablero");
     contenedor.innerHTML = "";
@@ -45,29 +40,49 @@ function mostrarConsola(cartas, numParejas) {
     }
     console.log("Secuencia de cartas: " + secuencia);
 }
+function fin() {
+    localStorage.removeItem("partidaGuardada");
+    console.log("Partida finalizada.");
+}
 
 function iniciarJuego() {
     let datos = localStorage.getItem("partidaGuardada");
-    let numeroP;
-    if(datos){
-        let guardado = JSON.parse(datos);
-        numeroP = Number(guardado);
-        console.log("Partida recuperada.");
-    }else{
+    let numeroP = 0;
+    let barajado = 0;
+    if (datos !== null) {
+        try {
+            let guardado = JSON.parse(datos);
+            if (typeof guardado === "object" && guardado !== 0 && guardado.mazo && guardado.parejas) {
+                numeroP = guardado.parejas;
+                barajado = guardado.mazo;
+                console.log("Partida recuperada con éxito.");
+            }
+        } catch (error) {
+            console.log("Datos erróneos, se iniciará una nueva partida.");
+        }
+    }
+    if (barajado === 0){
         let ParejaCartas = prompt("Introduce el número de parejas. Tiene que ser un numero del 4 al 12:");
         if (ParejaCartas !== null) {
             numeroP = Number(ParejaCartas);
-            if (!Number.isNaN(numeroP) && numeroP >= 4 && numeroP <= 12) {
-                localStorage.setItem("partidaGuardada", JSON.stringify(ParejaCartas));//JSON.stringify convierte un valor a JSON para poder guardarlo en el localStorage.
-            }else{
-                alert("El número escogido está fuera de rango (debe ser entre 4 y 12) o no es válido.");
+            if (Number.isNaN(numeroP) || numeroP < 4 || numeroP > 12) {
+                alert("El número escogido está fuera de rango. Tiene que ser un numero del 4 al 12:");
                 return;
             }
+            let mazo = generarCartas(numeroP);
+            barajado = fisher_yates(mazo);
+            let partidaActual = { parejas: numeroP, mazo: barajado };
+            try {
+                localStorage.setItem("partidaGuardada", JSON.stringify(partidaActual));
+                console.log("Se ha creado una nueva partida.");
+            } catch (error) {
+                console.error("No se pudo guardar la partida: ", error);
+            }
+        }else{
+            console.log("El usuario canceló la partida.");
+            return;
         }
-        return;
     }
-    let mazo = generarCartas(numeroP);
-    let barajado = fisher_yates(mazo);
     mostrarCartas(barajado);
     mostrarConsola(barajado, numeroP);
 }
