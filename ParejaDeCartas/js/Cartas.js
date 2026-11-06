@@ -13,8 +13,8 @@ function mostrarCartas(cartas) {
 function generarCartas(numParejas) {
     let cartas = [];
     for (let i = 1; i <= numParejas; i++) {
-        cartas.push({ numero: i, descubierta: true });//Guarda el numero de la carta y si esta descubierta o no.
-        cartas.push({ numero: i, descubierta: true });//Ademas tanto numero como descubierta son propiedades distintas.
+        cartas.push({ numero: i, descubierta: false });//Guarda el numero de la carta y si esta descubierta o no.
+        cartas.push({ numero: i, descubierta: false });//Ademas tanto numero como descubierta son propiedades distintas.
     }
     return cartas;
 }
@@ -40,6 +40,7 @@ function mostrarConsola(cartas, numParejas) {
     }
     console.log("Secuencia de cartas: " + secuencia);
 }
+
 function fin() {
     localStorage.removeItem("partidaGuardada");
     console.log("Partida finalizada.");
