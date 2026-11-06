@@ -31,6 +31,12 @@ function fisher_yates(listaNum) {
     return listaNum;
 }
 
+function voltearCarta(let fila, let columna){
+    //tendremos quue hacer que cuando le de click a la carta salga el numero, sino saldra una x.
+    let hola;
+}
+
+
 function mostrarConsola(cartas, numParejas) {
     console.log("Número de parejas: " + numParejas);
     console.log("Numero total de cartas: " + cartas.length);
