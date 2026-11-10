@@ -35,9 +35,13 @@ function fisher_yates(listaNum) {
     return listaNum;
 }
 
-function voltearCarta(fila, columna){
-    //tendremos quue hacer que cuando le de click a la carta salga el numero, sino saldra una x.
-    let hola;
+function voltearCarta(){
+    //Tendremos que hacer que cuando le de click a la carta salga el numero, sino saldra una x.
+    let etiqueta = 0;
+    
+    
+    descubierta = true;
+    mostrarCartas(cartas);
 }
 
 
@@ -96,5 +100,7 @@ function iniciarJuego() {
     }
     mostrarCartas(barajado);
     mostrarConsola(barajado, numeroP);
+    numeroP.etiqueta.onclick = voltearCarta();
+    
 }
 iniciarJuego();

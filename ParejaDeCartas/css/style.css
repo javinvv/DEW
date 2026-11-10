@@ -2,8 +2,25 @@
     display: flex;
     flex-wrap: wrap;
     width: 300px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 }
-
+h1 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.icono img{
+    width: 10%;
+    height: 10%;
+    display: flex;
+    flex: 1;
+}
 .cuadrado {
     width: 50px;
     height: 70px;
