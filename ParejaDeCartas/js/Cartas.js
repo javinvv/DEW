@@ -11,6 +11,11 @@ function mostrarCartas(cartas) {
         }else{
             etiqueta.textContent = "x";
         }
+        etiqueta.onclick = function() {
+            //carta.descubierta = true;
+            carta.descubierta = !carta.descubierta;//Cambia el valor de la caja al contrario.
+            mostrarCartas(cartas);
+        };
         contenedor.appendChild(etiqueta);//Metemos la etiqueta div dentro del tablero.
     }
 }
@@ -33,15 +38,6 @@ function fisher_yates(listaNum) {
         i--;
     }
     return listaNum;
-}
-
-function voltearCarta(){
-    //Tendremos que hacer que cuando le de click a la carta salga el numero, sino saldra una x.
-    let etiqueta = 0;
-    
-    
-    descubierta = true;
-    mostrarCartas(cartas);
 }
 
 
@@ -100,7 +96,6 @@ function iniciarJuego() {
     }
     mostrarCartas(barajado);
     mostrarConsola(barajado, numeroP);
-    numeroP.etiqueta.onclick = voltearCarta();
     
 }
 iniciarJuego();
