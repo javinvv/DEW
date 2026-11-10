@@ -6,7 +6,11 @@ function mostrarCartas(cartas) {
         let carta = cartas[i];
         let etiqueta = document.createElement("div");
         etiqueta.classList.add("cuadrado");//Añadimos la clase carta al div para posteriormente darle forma en el documento css.
-        etiqueta.textContent = carta.numero;//Añadimos el numero de la carta a la etiqueta div.
+        if(carta.descubierta === true){
+            etiqueta.textContent = carta.numero;//Añadimos el numero de la carta a la etiqueta div.
+        }else{
+            etiqueta.textContent = "x";
+        }
         contenedor.appendChild(etiqueta);//Metemos la etiqueta div dentro del tablero.
     }
 }
@@ -31,7 +35,7 @@ function fisher_yates(listaNum) {
     return listaNum;
 }
 
-function voltearCarta(let fila, let columna){
+function voltearCarta(fila, columna){
     //tendremos quue hacer que cuando le de click a la carta salga el numero, sino saldra una x.
     let hola;
 }
