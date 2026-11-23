@@ -1,7 +1,53 @@
+class Carta{
+    constructor(numero, descubierta) {
+        this.numero = numero;
+        this.descubierta = descubierta;
+    }
+    getNumero() {
+        return this.numero;
+    }
+    setNumero(numero) {
+        this.numero = numero;
+    }
+    getDescubierta() {
+        return this.descubierta;
+    }
+    setDescubierta(descubierta) {
+        this.descubierta = descubierta;
+    }
+}
+
+class Temporizador {
+    static instancia = null;
+    //Creamos una variable estática llamada instancia que se inicializa como null.
+    //Esta variable se utilizará para almacenar la instancia única de la clase Temporizador.
+
+    constructor(tiempo) {
+        this.tiempo = tiempo;
+        this.intervalo = null;
+    }
+
+    static obtenerInstancia(tiempo) {
+        if (Temporizador.instancia === null) {
+            Temporizador.instancia = new Temporizador(tiempo);
+        }
+        return Temporizador.instancia;
+    }
+
+    iniciar() {
+        let temporizador = this;
+
+        this.intervalo = setInterval(function() {
+            temporizador.tiempo++;
+            document.getElementById("temporizador").textContent = temporizador.tiempo;
+        }, 1000);
+    }
+}
+
 function mostrarCartas(cartas) {
     const contenedor = document.getElementById("tablero");
     contenedor.innerHTML = "";
-
+    const valor = document.getElementById("contador");
     for (let i = 0; i < cartas.length; i++) {
         let carta = cartas[i];
         let etiqueta = document.createElement("div");
@@ -12,8 +58,12 @@ function mostrarCartas(cartas) {
             etiqueta.textContent = "x";
         }
         etiqueta.onclick = function() {
-            //carta.descubierta = true;
-            carta.descubierta = !carta.descubierta;//Cambia el valor de la caja al contrario.
+            if (carta.descubierta === false) {
+                carta.descubierta = true;
+                valor.textContent = Number(valor.textContent) + 1;
+            } else {
+                carta.descubierta = false;
+            }
             mostrarCartas(cartas);
         };
         contenedor.appendChild(etiqueta);//Metemos la etiqueta div dentro del tablero.
@@ -22,8 +72,8 @@ function mostrarCartas(cartas) {
 function generarCartas(numParejas) {
     let cartas = [];
     for (let i = 1; i <= numParejas; i++) {
-        cartas.push({ numero: i, descubierta: false });//Guarda el numero de la carta y si esta descubierta o no.
-        cartas.push({ numero: i, descubierta: false });//Ademas tanto numero como descubierta son propiedades distintas.
+        cartas.push(new Carta(i, false));//Guarda el numero de la carta y si esta descubierta o no.
+        cartas.push(new Carta(i, false));//Ademas tanto numero como descubierta son propiedades distintas.
     }
     return cartas;
 }
@@ -38,6 +88,16 @@ function fisher_yates(listaNum) {
         i--;
     }
     return listaNum;
+}
+
+function Contador(cartas) {
+    let contador = 0;
+    for (let i = 0; i < cartas.length; i++) {
+        if(cartas[i].descubierta === true){
+            contador++;
+        }
+    }
+    return contador;
 }
 
 
