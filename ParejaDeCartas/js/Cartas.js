@@ -142,7 +142,7 @@ function iniciarJuego() {
             }
             let mazo = generarCartas(numeroP);
             barajado = fisher_yates(mazo);
-            let partidaActual = { parejas: numeroP, mazo: barajado };
+            let partidaActual = { parejas: numeroP, mazo: barajado,  fecha: new Date()};
             try {
                 localStorage.setItem("partidaGuardada", JSON.stringify(partidaActual));
                 console.log("Se ha creado una nueva partida.");
@@ -154,6 +154,9 @@ function iniciarJuego() {
             return;
         }
     }
+    let fecha = new Date();
+    let fechaFormateada = new Intl.DateTimeFormat("es-ES").format(fecha);
+    document.getElementById("fecha").textContent = fechaFormateada;
     mostrarCartas(barajado);
     mostrarConsola(barajado, numeroP);
     

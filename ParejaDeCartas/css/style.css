@@ -38,7 +38,7 @@ h1 {
     height: 30px;
     font-weight: bold;
     margin-top: 10px;
-    margin-left: 23em;
+    margin-left: 22em;
     text-align: center;
     border: 2px solid black;
     background-color: lightgrey;
@@ -47,8 +47,18 @@ h1 {
     width: 50px;
     height: 30px;
     font-weight: bold;
-    margin-top: -32px;
-    margin-left: 33em;
+    margin-top: -34px;
+    margin-left: 535px;
+    text-align: center;
+    border: 2px solid black;
+    background-color: lightgrey;
+}
+#fecha {
+    width: 72px;
+    height: 30px;
+    font-weight: bold;
+    margin-top: -34px;
+    margin-left: 27em;
     text-align: center;
     border: 2px solid black;
     background-color: lightgrey;
@@ -66,7 +76,27 @@ h1 {
         width: 50px;
         height: 30px;
         font-weight: bold;
-        margin-left: 52em;
+        margin-left: 832px;
+        text-align: center;
+        border: 2px solid black;
+        background-color: lightgrey;
+    }
+    #temporizador {
+        width: 50px;
+        height: 30px;
+        font-weight: bold;
+        margin-top: -34px;
+        margin-left: 1005px;
+        text-align: center;
+        border: 2px solid black;
+        background-color: lightgrey;
+    }
+    #fecha {
+        width: 72px;
+        height: 30px;
+        font-weight: bold;
+        margin-top: -34px;
+        margin-left: 908px;
         text-align: center;
         border: 2px solid black;
         background-color: lightgrey;
