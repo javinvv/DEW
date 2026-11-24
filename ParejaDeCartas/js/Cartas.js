@@ -18,29 +18,14 @@ class Carta{
 }
 
 class Temporizador {
-    static instancia = null;
-    //Creamos una variable estática llamada instancia que se inicializa como null.
-    //Esta variable se utilizará para almacenar la instancia única de la clase Temporizador.
-
     constructor(tiempo) {
         this.tiempo = tiempo;
-        this.intervalo = null;
     }
-
-    static obtenerInstancia(tiempo) {
-        if (Temporizador.instancia === null) {
-            Temporizador.instancia = new Temporizador(tiempo);
-        }
-        return Temporizador.instancia;
+    getTiempo() {
+        return this.tiempo;
     }
-
-    iniciar() {
-        let temporizador = this;
-
-        this.intervalo = setInterval(function() {
-            temporizador.tiempo++;
-            document.getElementById("temporizador").textContent = temporizador.tiempo;
-        }, 1000);
+    setTiempo(tiempo) {
+        this.tiempo = tiempo;
     }
 }
 
