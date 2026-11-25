@@ -1,3 +1,5 @@
+let bancoImagenes = ["carta1.jpeg", "carta2.jpeg", "carta3.jpeg", "carta4.jpeg", "carta5.jpeg",  "carta6.jpeg",  "carta7.jpeg",  "carta8.jpeg",  "carta9.jpeg",  "carta10.jpeg",  "carta11.jpeg",  "carta12.jpeg", ]
+let fondo = "/img/cartaDetras.jpeg"
 class Carta{
     constructor(numero, descubierta) {
         this.numero = numero;
