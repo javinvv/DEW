@@ -1,0 +1,1 @@
+const lista = document.getElementsByClassName("div2")[1];
