@@ -1,1 +1,1 @@
-const lista = document.getElementsByClassName("div2")[1];
+const lista = document.querySelector(".div2");
